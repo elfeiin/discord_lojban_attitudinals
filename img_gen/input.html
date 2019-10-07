@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<style>
+			
+			body {
+			}
+			
+			.outer {
+				
+				display: block;
+				
+			}
+			
+			.mid {
+				
+				display: inline-block;
+				
+				background: black;
+				
+			}
+			
+			.inner {
+				
+				color:transparent;
+				
+				background-image: linear-gradient(to right, #f22 20%, #f2f, #22f, #2ff, #2f2, #2f2, #ff2, #f22);
+				background-clip: text;
+				-webkit-background-clip: text;
+				
+				font-size: 512px;
+				
+			}
+			
+		</style>
+	</head>
+	<body>|||
+	
+	<script src="dom-to-image/src/dom-to-image.js"></script>
+	<script>
+		function byid(id) {
+			return document.getElementById(id);
+		}
+		
+		let ids = [|||];
+		
+		for (i in ids) {
+			let id = ids[i];
+			domtoimage.toPng(byid(id)).then(function (dataurl) {
+				var image = new Image();
+				image.src = dataurl;
+				document.body.appendChild(image);
+				byid(id).style.display = "none";
+			})
+			.catch(function (e) {
+				console.error(e);
+			})
+		}
+	</script>
+	</body>
+</html>
